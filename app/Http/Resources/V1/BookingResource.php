@@ -21,7 +21,7 @@ class BookingResource extends JsonResource
             'customer' => new CustomerResource($this->whenLoaded('customer')),
             'checkInDate' => $this->check_in_date,
             'checkOutDate' => $this->check_out_date,
-            'totalPrice' => $this->total_price ?? 55
+            'totalPrice' => $this->total_price
         ];
     }
 }

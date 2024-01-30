@@ -28,6 +28,7 @@ class StoreBookingRequest extends FormRequest
             'roomId' => [
                 'required',
                 'exists:rooms,id',
+                //check if room is not already book for the given dates
                 Rule::unique('bookings', 'room_id')->where(function ($query) {
                     $query->where('room_id', $this->input('roomId'))
                         ->where(function (Builder $query) {
