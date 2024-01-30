@@ -4,7 +4,6 @@ use App\Http\Controllers\Api\V1\BookingController;
 use App\Http\Controllers\Api\V1\CustomerController;
 use App\Http\Controllers\Api\V1\PaymentController;
 use App\Http\Controllers\Api\V1\RoomController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +33,6 @@ Route::group(
 );
 
 Route::post('login', function () {
-
     $credentials = [
         'email' => 'admin@admin.com',
         'password' => 'admin'

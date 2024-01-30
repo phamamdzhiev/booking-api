@@ -7,14 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\StoreBookingRequest;
 use App\Http\Resources\V1\BookingCollection;
 use App\Http\Resources\V1\BookingResource;
-use App\Http\Resources\V1\CustomerResource;
 use App\Models\Booking;
-use App\Models\Room;
-use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
-    public function index()
+    public function index(): BookingCollection
     {
         $bookings = Booking::with(['room', 'customer'])->get();
         return new BookingCollection($bookings);
@@ -29,7 +26,7 @@ class BookingController extends Controller
         return new BookingResource($booking);
     }
 
-    public function show(Booking $booking)
+    public function show(Booking $booking): BookingResource
     {
         $booking->load(['room', 'customer']);
         return new BookingResource($booking);

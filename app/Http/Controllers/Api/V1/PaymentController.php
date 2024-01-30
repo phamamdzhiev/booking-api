@@ -7,8 +7,6 @@ use App\Http\Requests\V1\StorePaymentRequest;
 use App\Http\Resources\V1\PaymentCollection;
 use App\Http\Resources\V1\PaymentResource;
 use App\Models\Payment;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {

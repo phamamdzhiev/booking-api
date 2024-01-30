@@ -10,18 +10,12 @@ use App\Models\Room;
 
 class RoomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return new RoomCollection(Room::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreRoomRequest $request)
+    public function store(StoreRoomRequest $request): RoomResource
     {
         return new RoomResource(Room::create($request->all()));
     }
@@ -29,7 +23,7 @@ class RoomController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Room $room)
+    public function show(Room $room): RoomResource
     {
         return new RoomResource($room);
     }

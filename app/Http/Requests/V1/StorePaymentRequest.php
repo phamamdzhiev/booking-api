@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\V1;
 
+use App\Enum\PaymentStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePaymentRequest extends FormRequest
 {
@@ -26,7 +28,7 @@ class StorePaymentRequest extends FormRequest
             'bookingId' => 'required|exists:bookings,id',
             'amount' => 'required|numeric|min:0',
             'paymentDate' => 'required|date',
-            'status' => 'required|in:pending,completed,failed,refunded',
+            'status' => ['required', Rule::enum(PaymentStatusEnum::class)],
         ];
     }
 
@@ -40,7 +42,7 @@ class StorePaymentRequest extends FormRequest
             'paymentDate.required' => 'Датата на плащане е задължителна',
             'paymentDate.date' => 'Датата на плащане е невалидна',
             'status.required' => 'Статусът е задължителен',
-            'status.in' => 'Валидни опции са :in',
+            'status.in' => 'Невалиден статус',
         ];
     }
 

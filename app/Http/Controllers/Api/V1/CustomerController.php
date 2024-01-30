@@ -13,7 +13,7 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): CustomerCollection
     {
         return new CustomerCollection(Customer::all());
     }
@@ -29,7 +29,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Customer $customer)
+    public function show(Customer $customer): CustomerResource
     {
         return new CustomerResource($customer);
     }
